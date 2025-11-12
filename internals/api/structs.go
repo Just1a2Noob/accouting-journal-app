@@ -7,13 +7,12 @@ import (
 )
 
 type UserDB struct {
-	ID         uuid.UUID `json:"id,omitempty"`
-	Username   string    `json:"username,omitempty"`
-	Created_at time.Time `json:"created_at,omitempty"`
-	Updated_at time.Time `json:"updated_at,omitempty"`
-	Email      string    `json:"email,omitempty"`
-	Section    string    `json:"section,omitempty"`
-	Role       string    `json:"role,omitempty"`
+	ID       uuid.UUID `json:"id,omitempty"`
+	Username string    `json:"username,omitempty"`
+	Password string    `json:"password,omitempty"`
+	Role     string    `json:"role,omitempty"`
+	Section  string    `json:"section,omitempty"`
+	Email    string    `json:"email,omitempty"`
 }
 
 type ExpenseType struct {
