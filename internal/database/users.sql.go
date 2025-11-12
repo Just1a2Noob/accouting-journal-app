@@ -70,3 +70,34 @@ func (q *Queries) CreateUsers(ctx context.Context, arg CreateUsersParams) (User,
 	)
 	return i, err
 }
+
+const searchUser = `-- name: SearchUser :one
+SELECT
+  id,
+  username,
+  hash_pass,
+  role,
+  section 
+  FROM users WHERE username = $1
+`
+
+type SearchUserRow struct {
+	ID       uuid.UUID
+	Username string
+	HashPass string
+	Role     string
+	Section  string
+}
+
+func (q *Queries) SearchUser(ctx context.Context, username string) (SearchUserRow, error) {
+	row := q.db.QueryRowContext(ctx, searchUser, username)
+	var i SearchUserRow
+	err := row.Scan(
+		&i.ID,
+		&i.Username,
+		&i.HashPass,
+		&i.Role,
+		&i.Section,
+	)
+	return i, err
+}
