@@ -47,3 +47,10 @@ type IncomesDB struct {
 	Updated_at       time.Time `json:"updated_at,omitempty"`
 	UserID           uuid.UUID `json:"user_id,omitempty"`
 }
+
+type UserResponse struct {
+	Username string `json:"username,omitempty"`
+	Email    string `json:"email,omitempty"`
+	Section  string `json:"section,omitempty"`
+	Roles    string `json:"roles,omitempty"`
+}
