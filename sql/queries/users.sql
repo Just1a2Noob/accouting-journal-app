@@ -19,3 +19,12 @@ INSERT INTO users (
   $8
 )
 RETURNING *;
+
+-- name: SearchUser :one
+SELECT
+  id,
+  username,
+  hash_pass,
+  role,
+  section 
+  FROM users WHERE username = $1;
