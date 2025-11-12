@@ -46,6 +46,7 @@ type IncomeType struct {
 type User struct {
 	ID        uuid.UUID
 	Username  string
+	HashPass  string
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	Email     string
