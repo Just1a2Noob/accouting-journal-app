@@ -24,13 +24,17 @@ func main() {
 
 	dbQueries := database.New(db)
 
+	secret := os.Getenv("SECRET")
 	apicfg := api.ApiConfig{
 		Database: *dbQueries,
+		Secret:   secret,
 	}
 
 	const filepathRoot = "."
 	const port = "8080"
 	mux := http.NewServeMux()
+
+	mux.HandleFunc("GET /api/users", apicfg.HandlerCreateUser)
 
 	srv := &http.Server{
 		Addr:    ":" + port,
