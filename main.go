@@ -28,6 +28,7 @@ func main() {
 	apicfg := api.ApiConfig{
 		Database: *dbQueries,
 		Secret:   secret,
+		User:     api.LoggedUser{},
 	}
 
 	const filepathRoot = "."
