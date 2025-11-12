@@ -2,6 +2,7 @@
 CREATE TABLE users(
     id uuid primary key,
     username TEXT NOT NULL,
+    hash_pass TEXT NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
     email TEXT NOT NULL UNIQUE,
