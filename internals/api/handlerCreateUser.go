@@ -24,6 +24,12 @@ func (cfg *ApiConfig) HandlerCreateUser(w http.ResponseWriter, r *http.Request) 
 
 	hash_pass, err := auth.HashPassword(userdb.Password)
 	if err != nil {
+		ErrorResponse(w, "Error hashing password", err, http.StatusInternalServerError)
+		return
+	}
+	err = auth.CheckPasswordHash(userdb.Password, hash_pass)
+	if err != nil {
+		ErrorResponse(w, "Error password does not match hash", err, http.StatusInternalServerError)
 		return
 	}
 
