@@ -6,11 +6,13 @@ import (
 	"net/http"
 )
 
-func ErrorResponse(w http.ResponseWriter, msg string, code int) {
+func ErrorResponse(w http.ResponseWriter, msg string, err error, code int) {
 	response := struct {
-		ErrorMSG string
+		ErrorMSG    string
+		Description string
 	}{
-		ErrorMSG: msg,
+		ErrorMSG:    msg,
+		Description: err.Error(),
 	}
 
 	errResponse, err := json.Marshal(response)
