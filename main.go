@@ -36,6 +36,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /api/users", apicfg.HandlerCreateUser)
+	mux.HandleFunc("GET /api/login", apicfg.HandlerLogUser)
 
 	srv := &http.Server{
 		Addr:    ":" + port,
