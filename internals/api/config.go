@@ -6,4 +6,5 @@ import (
 
 type ApiConfig struct {
 	Database database.Queries
+	Secret   string
 }
